@@ -30,26 +30,9 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import Foundation
 
-struct SliderView: View {
-  @Binding var color: Double
-  var text: String
-  
-  var body: some View {
-    VStack {
-      Text(text)
-      HStack {
-        Slider(value: $color, in: 0...Constants.maxRGBIntensity)
-        Text("\(Int(color.rounded()))")
-          .frame(width: Constants.sliderTextWidth)
-      }
-    }
-  }
-}
-
-struct SliderView_Previews: PreviewProvider {
-  static var previews: some View {
-    SliderView(color: .constant(0.0), text: "Red")
-  }
+enum Constants {
+  public static let maxRGBIntensity = 255.0
+  public static let sliderTextWidth = 35.0
 }

@@ -53,7 +53,7 @@ struct ButtonViews: View {
   
     var body: some View {
       Button(text) {
-        foregroundColor = Color(red: redColor / 255, green: greenColor / 255, blue: blueColor / 255)
+        foregroundColor = Color(red: redColor / Constants.maxRGBIntensity, green: greenColor / Constants.maxRGBIntensity, blue: blueColor / Constants.maxRGBIntensity)
       }
     }
 }

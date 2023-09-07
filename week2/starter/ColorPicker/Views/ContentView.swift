@@ -32,24 +32,6 @@
 
 import SwiftUI
 
-struct DeviceRotationViewModifier: ViewModifier {
-    let action: (UIDeviceOrientation) -> Void
- 
-    func body(content: Content) -> some View {
-        content
-            .onAppear()
-            .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
-                action(UIDevice.current.orientation)
-            }
-    }
-}
- 
-extension View {
-    func onRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
-        self.modifier(DeviceRotationViewModifier(action: action))
-    }
-}
-
 struct ContentView: View {
   @State private var alertIsVisible: Bool = false
   @State private var redColor: Double = 250.0
@@ -63,16 +45,7 @@ struct ContentView: View {
   }
   
   var body: some View {
-    Group {
-      if orientation.isPortrait {
-        PortraitView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
-      } else {
-        LandscapeView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
-      }
-    }
-    .onRotate { newOrientation in
-      orientation = newOrientation
-    }
+    ColorPickerView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor, orientation: $orientation)
   }
 }
 
@@ -81,10 +54,5 @@ struct ContentView_Previews: PreviewProvider {
     ContentView()
     ContentView()
       .preferredColorScheme(.dark)
-    ContentView()
-      .previewInterfaceOrientation(.landscapeRight)
-    ContentView()
-      .preferredColorScheme(.dark)
-      .previewInterfaceOrientation(.landscapeRight)
   }
 }

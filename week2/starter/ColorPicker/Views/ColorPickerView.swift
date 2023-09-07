@@ -32,6 +32,72 @@
 
 import SwiftUI
 
+// Device Rotation Source Code - https://www.hackingwithswift.com/quick-start/swiftui/how-to-detect-device-rotation
+struct DeviceRotationViewModifier: ViewModifier {
+  let action: (UIDeviceOrientation) -> Void
+  
+  func body(content: Content) -> some View {
+    content
+      .onAppear()
+      .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+        action(UIDevice.current.orientation)
+      }
+  }
+}
+
+extension View {
+  func onRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
+    self.modifier(DeviceRotationViewModifier(action: action))
+  }
+}
+
+struct ColorPickerView: View {
+  @Binding var redColor: Double
+  @Binding var greenColor: Double
+  @Binding var blueColor: Double
+  @Binding var foregroundColor: Color
+  @Binding var orientation: UIDeviceOrientation
+  
+  var body: some View {
+    Group {
+      if orientation.isLandscape {
+        LandscapeView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
+      } else {
+        PortraitView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
+      }
+    }
+    .onRotate { newOrientation in
+      orientation = newOrientation
+    }
+  }
+}
+
+struct LandscapeView: View {
+  @Binding var redColor: Double
+  @Binding var greenColor: Double
+  @Binding var blueColor: Double
+  @Binding var foregroundColor: Color
+  
+  var body: some View {
+    HStack {
+      VStack {
+        TitleTextViews(text: "Color Picker")
+        RoundedRectViews(foregroundColor: $foregroundColor)
+      }
+      VStack {
+        SliderView(color: $redColor, text: "Red")
+          .tint(.red)
+        SliderView(color: $greenColor, text: "Green")
+          .tint(.green)
+        SliderView(color: $blueColor, text: "Blue")
+        ButtonViews(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, text: "Set Color")
+      }
+      .padding(.horizontal)
+    }
+    .padding()
+  }
+}
+
 struct PortraitView: View {
   @Binding var redColor: Double
   @Binding var greenColor: Double
@@ -57,10 +123,9 @@ struct PortraitView: View {
   }
 }
 
-struct PortraitView_Previews: PreviewProvider {
+struct ColorPickerView_Previews: PreviewProvider {
   static var previews: some View {
-    PortraitView(redColor: .constant(250), greenColor: .constant(100), blueColor: .constant(50), foregroundColor: .constant(Color.yellow))
-    PortraitView(redColor: .constant(250), greenColor: .constant(100), blueColor: .constant(50), foregroundColor: .constant(Color.yellow))
-      .preferredColorScheme(.dark)
+    ColorPickerView(redColor: .constant(250), greenColor: .constant(100), blueColor: .constant(50), foregroundColor: .constant(Color.yellow), orientation: .constant(UIDeviceOrientation.portrait))
+    ColorPickerView(redColor: .constant(250), greenColor: .constant(100), blueColor: .constant(50), foregroundColor: .constant(Color.yellow), orientation: .constant(UIDeviceOrientation.landscapeRight)).previewInterfaceOrientation(.landscapeRight)
   }
 }

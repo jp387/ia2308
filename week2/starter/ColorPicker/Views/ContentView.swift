@@ -32,19 +32,47 @@
 
 import SwiftUI
 
+struct DeviceRotationViewModifier: ViewModifier {
+    let action: (UIDeviceOrientation) -> Void
+ 
+    func body(content: Content) -> some View {
+        content
+            .onAppear()
+            .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                action(UIDevice.current.orientation)
+            }
+    }
+}
+ 
+extension View {
+    func onRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
+        self.modifier(DeviceRotationViewModifier(action: action))
+    }
+}
+
 struct ContentView: View {
   @State private var alertIsVisible: Bool = false
   @State private var redColor: Double = 250.0
   @State private var greenColor: Double = 100.0
   @State private var blueColor: Double = 50.0
   @State private var foregroundColor = Color(red: 0, green: 0, blue: 0)
+  @State private var orientation = UIDeviceOrientation.portrait
   
   init() {
     _foregroundColor = State(initialValue: Color(red: redColor/255, green: greenColor/255, blue: blueColor/255))
   }
   
   var body: some View {
-    PortraitView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
+    Group {
+      if orientation.isPortrait {
+        PortraitView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
+      } else {
+        LandscapeView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
+      }
+    }
+    .onRotate { newOrientation in
+      orientation = newOrientation
+    }
   }
 }
 

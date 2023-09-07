@@ -55,6 +55,18 @@ struct ButtonViews: View {
       Button(text) {
         foregroundColor = Color(red: redColor / Constants.maxRGBIntensity, green: greenColor / Constants.maxRGBIntensity, blue: blueColor / Constants.maxRGBIntensity)
       }
+      .bold()
+      .padding()
+      .foregroundColor(Color("ButtonTextColor"))
+      .background(
+        RoundedRectangle(cornerRadius: Constants.roundedRectCornerRadius)
+          .fill(Color("ButtonColor"))
+          .overlay(
+            RoundedRectangle(cornerRadius: Constants.roundedRectCornerRadius)
+              .strokeBorder(lineWidth: Constants.strokeBorderWidth)
+              .foregroundColor(.white)
+          )
+      )
     }
 }
 

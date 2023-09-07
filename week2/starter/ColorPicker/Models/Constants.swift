@@ -35,4 +35,6 @@ import Foundation
 enum Constants {
   public static let maxRGBIntensity = 255.0
   public static let sliderTextWidth = 35.0
+  public static let roundedRectCornerRadius = CGFloat(15)
+  public static let strokeBorderWidth = CGFloat(2)
 }

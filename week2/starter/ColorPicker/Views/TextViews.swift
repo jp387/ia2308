@@ -39,6 +39,7 @@ struct TitleTextViews: View {
       Text(text)
         .font(.largeTitle)
         .bold()
+        .foregroundColor(Color("TextColor"))
     }
 }
 

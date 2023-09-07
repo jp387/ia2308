@@ -14,6 +14,7 @@
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
 		7AE876202AA991C100DCC3E0 /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8761F2AA991C100DCC3E0 /* TextViews.swift */; };
 		7AE876222AA993EA00DCC3E0 /* SliderViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE876212AA993EA00DCC3E0 /* SliderViews.swift */; };
+		7AE876242AA9956B00DCC3E0 /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE876232AA9956B00DCC3E0 /* RoundedViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7AE8761F2AA991C100DCC3E0 /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 		7AE876212AA993EA00DCC3E0 /* SliderViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViews.swift; sourceTree = "<group>"; };
+		7AE876232AA9956B00DCC3E0 /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				18D775C422AD944300AE281E /* ContentView.swift */,
 				7AE8761F2AA991C100DCC3E0 /* TextViews.swift */,
 				7AE876212AA993EA00DCC3E0 /* SliderViews.swift */,
+				7AE876232AA9956B00DCC3E0 /* RoundedViews.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			files = (
 				18D775C522AD944300AE281E /* ContentView.swift in Sources */,
 				7AE876222AA993EA00DCC3E0 /* SliderViews.swift in Sources */,
+				7AE876242AA9956B00DCC3E0 /* RoundedViews.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
 				7AE876202AA991C100DCC3E0 /* TextViews.swift in Sources */,
 			);

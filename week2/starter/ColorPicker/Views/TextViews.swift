@@ -35,16 +35,16 @@ import SwiftUI
 struct TitleTextViews: View {
   var text: String
   
-    var body: some View {
-      Text(text)
-        .font(.largeTitle)
-        .bold()
-        .foregroundColor(Color("TextColor"))
-    }
+  var body: some View {
+    Text(text)
+      .font(.largeTitle)
+      .bold()
+      .foregroundColor(Color("TextColor"))
+  }
 }
 
 struct TitleTextViews_Previews: PreviewProvider {
-    static var previews: some View {
-      TitleTextViews(text: "Color Picker")
-    }
+  static var previews: some View {
+    TitleTextViews(text: "Color Picker")
+  }
 }

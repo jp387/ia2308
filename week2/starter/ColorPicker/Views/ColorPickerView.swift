@@ -32,25 +32,6 @@
 
 import SwiftUI
 
-// Device Rotation Source Code - https://www.hackingwithswift.com/quick-start/swiftui/how-to-detect-device-rotation
-struct DeviceRotationViewModifier: ViewModifier {
-  let action: (UIDeviceOrientation) -> Void
-  
-  func body(content: Content) -> some View {
-    content
-      .onAppear()
-      .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
-        action(UIDevice.current.orientation)
-      }
-  }
-}
-
-extension View {
-  func onRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
-    self.modifier(DeviceRotationViewModifier(action: action))
-  }
-}
-
 struct ColorPickerView: View {
   @Binding var redColor: Double
   @Binding var greenColor: Double
@@ -120,6 +101,25 @@ struct PortraitView: View {
     }
     .background(Color("BackgroundColor"))
     .padding(20)
+  }
+}
+
+// Device Rotation Source Code - https://www.hackingwithswift.com/quick-start/swiftui/how-to-detect-device-rotation
+struct DeviceRotationViewModifier: ViewModifier {
+  let action: (UIDeviceOrientation) -> Void
+  
+  func body(content: Content) -> some View {
+    content
+      .onAppear()
+      .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+        action(UIDevice.current.orientation)
+      }
+  }
+}
+
+extension View {
+  func onRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
+    self.modifier(DeviceRotationViewModifier(action: action))
   }
 }
 

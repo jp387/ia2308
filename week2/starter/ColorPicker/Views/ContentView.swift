@@ -33,15 +33,14 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State private var alertIsVisible: Bool = false
-  @State private var redColor: Double = 250.0
-  @State private var greenColor: Double = 100.0
-  @State private var blueColor: Double = 50.0
+  @State private var redColor: Double = Constants.Color.red
+  @State private var greenColor: Double = Constants.Color.green
+  @State private var blueColor: Double = Constants.Color.blue
   @State private var foregroundColor = Color(red: 0, green: 0, blue: 0)
   @State private var orientation = UIDeviceOrientation.portrait
   
   init() {
-    _foregroundColor = State(initialValue: Color(red: redColor/255, green: greenColor/255, blue: blueColor/255))
+    _foregroundColor = State(initialValue: Color(red: redColor/Constants.maxRGBIntensity, green: greenColor/Constants.maxRGBIntensity, blue: blueColor/Constants.maxRGBIntensity))
   }
   
   var body: some View {

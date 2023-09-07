@@ -34,26 +34,29 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var alertIsVisible: Bool = false
-  @State private var redColor: Double = 107.0
-  @State private var greenColor: Double = 122.0
-  @State private var blueColor: Double = 165.0
+  @State private var redColor: Double = 250.0
+  @State private var greenColor: Double = 100.0
+  @State private var blueColor: Double = 50.0
   @State private var foregroundColor = Color(red: 0, green: 0, blue: 0)
   
   init() {
-    _foregroundColor = State(initialValue: Color(hue: redColor/255, saturation: greenColor/255, brightness: blueColor/255))
+    _foregroundColor = State(initialValue: Color(red: redColor/255, green: greenColor/255, blue: blueColor/255))
   }
   
   var body: some View {
     
     VStack {
-      TitleTextViews(text: "Color Picker")
-      RoundedRectViews(foregroundColor: $foregroundColor)
-      SliderView(color: $redColor, text: "Red")
-        .tint(.red)
-      SliderView(color: $greenColor, text: "Green")
-        .tint(.green)
-      SliderView(color: $blueColor, text: "Blue")
-      ButtonViews(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, text: "Set Color")
+        TitleTextViews(text: "Color Picker")
+        RoundedRectViews(foregroundColor: $foregroundColor)
+      VStack {
+        SliderView(color: $redColor, text: "Red")
+          .tint(.red)
+        SliderView(color: $greenColor, text: "Green")
+          .tint(.green)
+        SliderView(color: $blueColor, text: "Blue")
+        ButtonViews(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, text: "Set Color")
+      }
+      .padding()
     }
     .background(Color("BackgroundColor"))
     .padding(20)

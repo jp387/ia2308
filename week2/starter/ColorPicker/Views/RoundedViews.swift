@@ -38,8 +38,12 @@ struct RoundedRectViews: View {
     var body: some View {
       VStack {
         RoundedRectangle(cornerRadius: 0)
-          .foregroundColor(foregroundColor)
-          .border(.black)
+          .foregroundColor(foregroundColor.opacity(0.9))
+          .overlay(
+            RoundedRectangle(cornerRadius: 0)
+              .strokeBorder(lineWidth: 10)
+              .foregroundColor(.black.opacity(0.5))
+          )
       }
     }
 }
@@ -73,7 +77,7 @@ struct ButtonViews: View {
 struct RoundedViews_Previews: PreviewProvider {
     static var previews: some View {
       VStack {
-        RoundedRectViews(foregroundColor: .constant(Color.red))
+        RoundedRectViews(foregroundColor: .constant(Color.orange))
           .frame(width: 300, height: 300)
         ButtonViews(foregroundColor: .constant(Color.red), redColor: .constant(0.0), greenColor: .constant(0.0), blueColor: .constant(0.0), text: "Set Color")
       }

@@ -52,6 +52,7 @@ struct ContentView: View {
         Text("Red")
         HStack {
           Slider(value: $redColor, in: 0...255)
+            .tint(.red)
           Text("\(Int(redColor.rounded()))")
         }
       }
@@ -59,6 +60,7 @@ struct ContentView: View {
         Text("Green")
         HStack {
           Slider(value: $greenColor, in: 0...255)
+            .tint(.green)
           Text("\(Int(greenColor.rounded()))")
         }
       }

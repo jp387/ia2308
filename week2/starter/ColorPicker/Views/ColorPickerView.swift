@@ -46,6 +46,8 @@ struct ColorPickerView: View {
       PortraitView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
     } else if horizontalSizeClass == .compact && verticalSizeClass == .compact {
       LandscapeView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
+    } else if horizontalSizeClass == .regular && verticalSizeClass == .compact {
+      LandscapeView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
     } else {
       PortraitView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
     }

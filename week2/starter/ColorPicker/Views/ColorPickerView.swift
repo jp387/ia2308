@@ -63,7 +63,7 @@ struct LandscapeView: View {
     HStack {
       VStack {
         TitleTextViews(text: "Color Picker")
-        RoundedRectViews(foregroundColor: $foregroundColor)
+        RoundedRectView(foregroundColor: $foregroundColor)
       }
       VStack {
         SliderView(color: $redColor, text: "Red")
@@ -71,10 +71,11 @@ struct LandscapeView: View {
         SliderView(color: $greenColor, text: "Green")
           .tint(.green)
         SliderView(color: $blueColor, text: "Blue")
-        ButtonViews(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, text: "Set Color")
+        ButtonView(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, text: "Set Color")
       }
       .padding(.horizontal)
     }
+    .background(Color("BackgroundColor"))
     .padding()
   }
 }
@@ -88,14 +89,14 @@ struct PortraitView: View {
   var body: some View {
     VStack {
       TitleTextViews(text: "Color Picker")
-      RoundedRectViews(foregroundColor: $foregroundColor)
+      RoundedRectView(foregroundColor: $foregroundColor)
       VStack {
         SliderView(color: $redColor, text: "Red")
           .tint(.red)
         SliderView(color: $greenColor, text: "Green")
           .tint(.green)
         SliderView(color: $blueColor, text: "Blue")
-        ButtonViews(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, text: "Set Color")
+        ButtonView(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, text: "Set Color")
       }
       .padding()
     }

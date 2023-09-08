@@ -32,54 +32,60 @@
 
 import SwiftUI
 
-struct RoundedRectViews: View {
+struct RoundedRectView: View {
   @Binding var foregroundColor: Color
   
-    var body: some View {
-      VStack {
-        RoundedRectangle(cornerRadius: 0)
-          .foregroundColor(foregroundColor.opacity(0.9))
-          .overlay(
-            RoundedRectangle(cornerRadius: 0)
-              .strokeBorder(lineWidth: 10)
-              .foregroundColor(.black.opacity(0.5))
-          )
-      }
+  var body: some View {
+    VStack {
+      RoundedRectangle(cornerRadius: 0)
+        .foregroundColor(foregroundColor)
+        .overlay(
+          RoundedRectangle(cornerRadius: 0)
+            .strokeBorder(lineWidth: 10)
+            .foregroundColor(.black.opacity(0.35))
+        )
     }
+  }
 }
 
-struct ButtonViews: View {
+struct ButtonView: View {
   @Binding var foregroundColor: Color
   @Binding var redColor: Double
   @Binding var greenColor: Double
   @Binding var blueColor: Double
   var text: String
   
-    var body: some View {
-      Button(text) {
-        foregroundColor = Color(red: redColor / Constants.maxRGBIntensity, green: greenColor / Constants.maxRGBIntensity, blue: blueColor / Constants.maxRGBIntensity)
-      }
-      .bold()
-      .padding()
-      .foregroundColor(Color("ButtonTextColor"))
-      .background(
-        RoundedRectangle(cornerRadius: Constants.roundedRectCornerRadius)
-          .fill(Color("ButtonColor"))
-          .overlay(
-            RoundedRectangle(cornerRadius: Constants.roundedRectCornerRadius)
-              .strokeBorder(lineWidth: Constants.strokeBorderWidth)
-              .foregroundColor(.white)
-          )
-      )
+  var body: some View {
+    Button(text) {
+      foregroundColor = Color(red: redColor / Constants.maxRGBIntensity, green: greenColor / Constants.maxRGBIntensity, blue: blueColor / Constants.maxRGBIntensity)
     }
+    .bold()
+    .padding()
+    .foregroundColor(Color("ButtonTextColor"))
+    .background(
+      RoundedRectangle(cornerRadius: Constants.roundedRectCornerRadius)
+        .fill(Color("ButtonColor"))
+        .overlay(
+          RoundedRectangle(cornerRadius: Constants.roundedRectCornerRadius)
+            .strokeBorder(lineWidth: Constants.strokeBorderWidth)
+            .foregroundColor(.white)
+        )
+    )
+  }
 }
 
 struct RoundedViews_Previews: PreviewProvider {
-    static var previews: some View {
-      VStack {
-        RoundedRectViews(foregroundColor: .constant(Color.orange))
-          .frame(width: 300, height: 300)
-        ButtonViews(foregroundColor: .constant(Color.red), redColor: .constant(0.0), greenColor: .constant(0.0), blueColor: .constant(0.0), text: "Set Color")
-      }
+  static var previews: some View {
+    VStack {
+      RoundedRectView(foregroundColor: .constant(Color.orange))
+        .frame(width: 300, height: 300)
+      ButtonView(foregroundColor: .constant(Color.red), redColor: .constant(0.0), greenColor: .constant(0.0), blueColor: .constant(0.0), text: "Set Color")
     }
+    VStack {
+      RoundedRectView(foregroundColor: .constant(Color.orange))
+        .frame(width: 300, height: 300)
+      ButtonView(foregroundColor: .constant(Color.red), redColor: .constant(0.0), greenColor: .constant(0.0), blueColor: .constant(0.0), text: "Set Color")
+    }
+    .preferredColorScheme(.dark)
+  }
 }

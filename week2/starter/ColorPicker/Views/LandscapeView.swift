@@ -30,21 +30,37 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+import SwiftUI
 
-enum Constants {
-  enum General {
-    public static let sliderTextWidth = CGFloat(35)
-    public static let roundedRectCornerRadius = CGFloat(15)
-    public static let strokeBorderWidth = CGFloat(2)
-    public static let roundedRectBorderWidth = CGFloat(10)
-  }
+struct LandscapeView: View {
+  @Binding var redColor: Double
+  @Binding var greenColor: Double
+  @Binding var blueColor: Double
+  @Binding var foregroundColor: Color
   
-  enum Color {
-    public static let red = 250.0
-    public static let green = 100.0
-    public static let blue = 50.0
-    public static let roundedRectBorderOpacity = 0.5
-    public static let maxRGBIntensity = 255.0
+  var body: some View {
+    HStack {
+      VStack {
+        TitleTextViews(text: "Color Picker")
+        RoundedRectView(foregroundColor: $foregroundColor)
+      }
+      VStack {
+        SliderView(color: $redColor, text: "Red")
+          .tint(.red)
+        SliderView(color: $greenColor, text: "Green")
+          .tint(.green)
+        SliderView(color: $blueColor, text: "Blue")
+        ButtonView(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, text: "Set Color")
+      }
+      .padding(.horizontal)
+    }
+    .background(Color("BackgroundColor"))
+    .padding()
   }
+}
+
+struct LandscapeView_Previews: PreviewProvider {
+    static var previews: some View {
+      LandscapeView(redColor: .constant(250), greenColor: .constant(100), blueColor: .constant(50), foregroundColor: .constant(Color.yellow)).previewInterfaceOrientation(.landscapeRight)
+    }
 }

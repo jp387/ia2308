@@ -39,7 +39,7 @@ struct RoundedRectView: View {
     VStack {
       RoundedRectangle(cornerRadius: 0)
         .foregroundColor(foregroundColor)
-        .border(.brown.opacity(Constants.Color.borderOpacity), width: Constants.General.roundedRectBorderWidth)
+        .border(.brown.opacity(Constants.Color.roundedRectBorderOpacity), width: Constants.General.roundedRectBorderWidth)
     }
   }
 }

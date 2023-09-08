@@ -52,58 +52,6 @@ struct ColorPickerView: View {
   }
 }
 
-struct LandscapeView: View {
-  @Binding var redColor: Double
-  @Binding var greenColor: Double
-  @Binding var blueColor: Double
-  @Binding var foregroundColor: Color
-  
-  var body: some View {
-    HStack {
-      VStack {
-        TitleTextViews(text: "Color Picker")
-        RoundedRectView(foregroundColor: $foregroundColor)
-      }
-      VStack {
-        SliderView(color: $redColor, text: "Red")
-          .tint(.red)
-        SliderView(color: $greenColor, text: "Green")
-          .tint(.green)
-        SliderView(color: $blueColor, text: "Blue")
-        ButtonView(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, text: "Set Color")
-      }
-      .padding(.horizontal)
-    }
-    .background(Color("BackgroundColor"))
-    .padding()
-  }
-}
-
-struct PortraitView: View {
-  @Binding var redColor: Double
-  @Binding var greenColor: Double
-  @Binding var blueColor: Double
-  @Binding var foregroundColor: Color
-  
-  var body: some View {
-    VStack {
-      TitleTextViews(text: "Color Picker")
-      RoundedRectView(foregroundColor: $foregroundColor)
-      VStack {
-        SliderView(color: $redColor, text: "Red")
-          .tint(.red)
-        SliderView(color: $greenColor, text: "Green")
-          .tint(.green)
-        SliderView(color: $blueColor, text: "Blue")
-        ButtonView(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, text: "Set Color")
-      }
-      .padding()
-    }
-    .background(Color("BackgroundColor"))
-    .padding(20)
-  }
-}
-
 struct ColorPickerView_Previews: PreviewProvider {
   static var previews: some View {
     ColorPickerView(redColor: .constant(250), greenColor: .constant(100), blueColor: .constant(50), foregroundColor: .constant(Color.yellow))

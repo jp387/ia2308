@@ -39,11 +39,7 @@ struct RoundedRectView: View {
     VStack {
       RoundedRectangle(cornerRadius: 0)
         .foregroundColor(foregroundColor)
-        .overlay(
-          RoundedRectangle(cornerRadius: 0)
-            .strokeBorder(lineWidth: 10)
-            .foregroundColor(.black.opacity(0.35))
-        )
+        .border(.brown.opacity(Constants.Color.borderOpacity), width: Constants.General.roundedRectBorderWidth)
     }
   }
 }
@@ -57,17 +53,17 @@ struct ButtonView: View {
   
   var body: some View {
     Button(text) {
-      foregroundColor = Color(red: redColor / Constants.maxRGBIntensity, green: greenColor / Constants.maxRGBIntensity, blue: blueColor / Constants.maxRGBIntensity)
+      foregroundColor = Color(red: redColor / Constants.Color.maxRGBIntensity, green: greenColor / Constants.Color.maxRGBIntensity, blue: blueColor / Constants.Color.maxRGBIntensity)
     }
     .bold()
     .padding()
     .foregroundColor(Color("ButtonTextColor"))
     .background(
-      RoundedRectangle(cornerRadius: Constants.roundedRectCornerRadius)
+      RoundedRectangle(cornerRadius: Constants.General.roundedRectCornerRadius)
         .fill(Color("ButtonColor"))
         .overlay(
-          RoundedRectangle(cornerRadius: Constants.roundedRectCornerRadius)
-            .strokeBorder(lineWidth: Constants.strokeBorderWidth)
+          RoundedRectangle(cornerRadius: Constants.General.roundedRectCornerRadius)
+            .strokeBorder(lineWidth: Constants.General.strokeBorderWidth)
             .foregroundColor(.white)
         )
     )

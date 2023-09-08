@@ -40,9 +40,9 @@ struct SliderView: View {
     VStack {
       Text(text)
       HStack {
-        Slider(value: $color, in: 0...Constants.maxRGBIntensity)
+        Slider(value: $color, in: 0...Constants.Color.maxRGBIntensity)
         Text("\(Int(color.rounded()))")
-          .frame(width: Constants.sliderTextWidth)
+          .frame(width: Constants.General.sliderTextWidth)
       }
     }
   }

@@ -37,18 +37,17 @@ struct ColorPickerView: View {
   @Binding var greenColor: Double
   @Binding var blueColor: Double
   @Binding var foregroundColor: Color
-  @Binding var orientation: UIDeviceOrientation
+  
+  @Environment(\.horizontalSizeClass) var horizontalSizeClass
+  @Environment(\.verticalSizeClass) var verticalSizeClass
   
   var body: some View {
-    Group {
-      if orientation.isLandscape {
-        LandscapeView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
-      } else {
-        PortraitView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
-      }
-    }
-    .onRotate { newOrientation in
-      orientation = newOrientation
+    if horizontalSizeClass == .compact && verticalSizeClass == .regular {
+      PortraitView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
+    } else if horizontalSizeClass == .compact && verticalSizeClass == .compact {
+      LandscapeView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
+    } else {
+      PortraitView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
     }
   }
 }
@@ -105,28 +104,9 @@ struct PortraitView: View {
   }
 }
 
-// Device Rotation Source Code - https://www.hackingwithswift.com/quick-start/swiftui/how-to-detect-device-rotation
-struct DeviceRotationViewModifier: ViewModifier {
-  let action: (UIDeviceOrientation) -> Void
-  
-  func body(content: Content) -> some View {
-    content
-      .onAppear()
-      .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
-        action(UIDevice.current.orientation)
-      }
-  }
-}
-
-extension View {
-  func onRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
-    self.modifier(DeviceRotationViewModifier(action: action))
-  }
-}
-
 struct ColorPickerView_Previews: PreviewProvider {
   static var previews: some View {
-    ColorPickerView(redColor: .constant(250), greenColor: .constant(100), blueColor: .constant(50), foregroundColor: .constant(Color.yellow), orientation: .constant(UIDeviceOrientation.portrait))
-    ColorPickerView(redColor: .constant(250), greenColor: .constant(100), blueColor: .constant(50), foregroundColor: .constant(Color.yellow), orientation: .constant(UIDeviceOrientation.landscapeRight)).previewInterfaceOrientation(.landscapeRight)
+    ColorPickerView(redColor: .constant(250), greenColor: .constant(100), blueColor: .constant(50), foregroundColor: .constant(Color.yellow))
+    ColorPickerView(redColor: .constant(250), greenColor: .constant(100), blueColor: .constant(50), foregroundColor: .constant(Color.yellow)).previewInterfaceOrientation(.landscapeRight)
   }
 }

@@ -37,14 +37,13 @@ struct ContentView: View {
   @State private var greenColor: Double = Constants.Color.green
   @State private var blueColor: Double = Constants.Color.blue
   @State private var foregroundColor = Color(red: 0, green: 0, blue: 0)
-  @State private var orientation = UIDeviceOrientation.portrait
   
   init() {
-    _foregroundColor = State(initialValue: Color(red: redColor/Constants.maxRGBIntensity, green: greenColor/Constants.maxRGBIntensity, blue: blueColor/Constants.maxRGBIntensity))
+    _foregroundColor = State(initialValue: Color(red: redColor/Constants.Color.maxRGBIntensity, green: greenColor/Constants.Color.maxRGBIntensity, blue: blueColor/Constants.Color.maxRGBIntensity))
   }
   
   var body: some View {
-    ColorPickerView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor, orientation: $orientation)
+    ColorPickerView(redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor, foregroundColor: $foregroundColor)
   }
 }
 

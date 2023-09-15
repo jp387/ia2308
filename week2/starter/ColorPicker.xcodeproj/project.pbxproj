@@ -12,6 +12,13 @@
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
+		7A2FE42B2AAA6FAA0014BEDE /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2FE42A2AAA6FAA0014BEDE /* ColorPickerView.swift */; };
+		7AC89AC42AABA01600E91C7C /* PortraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC89AC32AABA01600E91C7C /* PortraitView.swift */; };
+		7AC89AC62AABA02100E91C7C /* LandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC89AC52AABA02100E91C7C /* LandscapeView.swift */; };
+		7AE876202AA991C100DCC3E0 /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8761F2AA991C100DCC3E0 /* TextViews.swift */; };
+		7AE876222AA993EA00DCC3E0 /* SliderViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE876212AA993EA00DCC3E0 /* SliderViews.swift */; };
+		7AE876242AA9956B00DCC3E0 /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE876232AA9956B00DCC3E0 /* RoundedViews.swift */; };
+		7AE876262AA996F000DCC3E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE876252AA996F000DCC3E0 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		18D775C922AD944400AE281E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7A2FE42A2AAA6FAA0014BEDE /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		7AC89AC32AABA01600E91C7C /* PortraitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortraitView.swift; sourceTree = "<group>"; };
+		7AC89AC52AABA02100E91C7C /* LandscapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeView.swift; sourceTree = "<group>"; };
+		7AE8761F2AA991C100DCC3E0 /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
+		7AE876212AA993EA00DCC3E0 /* SliderViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViews.swift; sourceTree = "<group>"; };
+		7AE876232AA9956B00DCC3E0 /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
+		7AE876252AA996F000DCC3E0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +70,9 @@
 		18D775BF22AD944300AE281E /* ColorPicker */ = {
 			isa = PBXGroup;
 			children = (
-				1839F4AF25190F2A00BB00F1 /* AppMain.swift */,
-				18D775C422AD944300AE281E /* ContentView.swift */,
-				18D775C622AD944400AE281E /* Assets.xcassets */,
-				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
+				7AE8761E2AA98FDD00DCC3E0 /* Views */,
+				7AE8761D2AA98FD600DCC3E0 /* Models */,
+				7AE8761C2AA98FC500DCC3E0 /* App */,
 				18D775CE22AD944400AE281E /* Info.plist */,
 				18D775C822AD944400AE281E /* Preview Content */,
 			);
@@ -72,6 +85,38 @@
 				18D775C922AD944400AE281E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7AE8761C2AA98FC500DCC3E0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1839F4AF25190F2A00BB00F1 /* AppMain.swift */,
+				18D775C622AD944400AE281E /* Assets.xcassets */,
+				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		7AE8761D2AA98FD600DCC3E0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7AE876252AA996F000DCC3E0 /* Constants.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7AE8761E2AA98FDD00DCC3E0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18D775C422AD944300AE281E /* ContentView.swift */,
+				7AE8761F2AA991C100DCC3E0 /* TextViews.swift */,
+				7AE876212AA993EA00DCC3E0 /* SliderViews.swift */,
+				7AE876232AA9956B00DCC3E0 /* RoundedViews.swift */,
+				7A2FE42A2AAA6FAA0014BEDE /* ColorPickerView.swift */,
+				7AC89AC52AABA02100E91C7C /* LandscapeView.swift */,
+				7AC89AC32AABA01600E91C7C /* PortraitView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +215,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D775C522AD944300AE281E /* ContentView.swift in Sources */,
+				7AE876222AA993EA00DCC3E0 /* SliderViews.swift in Sources */,
+				7AE876242AA9956B00DCC3E0 /* RoundedViews.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
+				7A2FE42B2AAA6FAA0014BEDE /* ColorPickerView.swift in Sources */,
+				7AC89AC42AABA01600E91C7C /* PortraitView.swift in Sources */,
+				7AE876202AA991C100DCC3E0 /* TextViews.swift in Sources */,
+				7AE876262AA996F000DCC3E0 /* Constants.swift in Sources */,
+				7AC89AC62AABA02100E91C7C /* LandscapeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +362,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ColorPicker/Preview Content\"";
-				DEVELOPMENT_TEAM = BBK84N9JY9;
+				DEVELOPMENT_TEAM = 4CYP4J2D8T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ColorPicker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -318,7 +370,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.ColorPicker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jp.ColorPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
